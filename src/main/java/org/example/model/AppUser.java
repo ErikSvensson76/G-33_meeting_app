@@ -63,11 +63,21 @@ public class AppUser {
     }
 
     public TreeSet<Meeting> getMeetings() {
+        if(meetings == null) meetings = new TreeSet<>();
         return meetings;
     }
 
-    public void setMeetings(TreeSet<Meeting> meetings) {
-        this.meetings = meetings;
+    public void addMeeting(Meeting meeting){
+        if(meetings.add(meeting)){
+            if(! meeting.getParticipants().contains(this))
+            meeting.getParticipants().add(this);
+        }
+    }
+
+    public void removeMeeting(Meeting meeting){
+        if(meetings.remove(meeting)){
+            meeting.getParticipants().remove(this);
+        }
     }
 
     @Override
