@@ -77,8 +77,21 @@ public class Meeting implements Comparable<Meeting>{
         return participants;
     }
 
-    public void setParticipants(List<AppUser> participants) {
+    void setParticipants(List<AppUser> participants) {
         this.participants = participants;
+    }
+
+    public void addParticipant(AppUser appUser){
+        if(!participants.contains(appUser)){
+            participants.add(appUser);
+            appUser.getMeetings().add(this);
+        }
+    }
+
+    public void removeParticipant(AppUser appUser){
+        if(participants.remove(appUser)){
+            appUser.getMeetings().remove(this);
+        }
     }
 
     @Override
