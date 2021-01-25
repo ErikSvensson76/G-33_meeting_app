@@ -74,6 +74,7 @@ public class Meeting implements Comparable<Meeting>{
     }
 
     public List<AppUser> getParticipants() {
+        if(participants == null) participants = new ArrayList<>();
         return participants;
     }
 
