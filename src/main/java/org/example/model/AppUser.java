@@ -67,6 +67,10 @@ public class AppUser {
         return meetings;
     }
 
+    void setMeetings(TreeSet<Meeting> meetings) {
+        this.meetings = meetings;
+    }
+
     public void addMeeting(Meeting meeting){
         if(meetings.add(meeting)){
             if(! meeting.getParticipants().contains(this))
