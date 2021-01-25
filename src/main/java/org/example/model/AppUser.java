@@ -1,5 +1,6 @@
 package org.example.model;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.TreeSet;
 import java.util.UUID;
@@ -72,6 +73,7 @@ public class AppUser {
     }
 
     public void addMeeting(Meeting meeting){
+        if(meeting == null) throw new IllegalArgumentException("Invalid parameter meeting was null");
         if(meetings.add(meeting)){
             if(! meeting.getParticipants().contains(this))
             meeting.getParticipants().add(this);
