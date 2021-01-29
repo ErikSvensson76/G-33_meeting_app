@@ -100,12 +100,12 @@ public class Meeting implements Comparable<Meeting>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Meeting meeting = (Meeting) o;
-        return Objects.equals(getMeetingId(), meeting.getMeetingId()) && Objects.equals(getStart(), meeting.getStart()) && Objects.equals(getEnd(), meeting.getEnd());
+        return Objects.equals(meetingId, meeting.meetingId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getMeetingId(), getStart(), getEnd());
+        return Objects.hash(meetingId);
     }
 
     @Override

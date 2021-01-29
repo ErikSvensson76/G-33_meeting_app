@@ -1,6 +1,5 @@
 package org.example.model;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.TreeSet;
 import java.util.UUID;
@@ -68,7 +67,18 @@ public class AppUser {
         return meetings;
     }
 
-    void setMeetings(TreeSet<Meeting> meetings) {
+    public void setMeetings(TreeSet<Meeting> meetings) {
+
+        if(meetings == null) meetings = new TreeSet<>();
+        if(this.meetings == null) this.meetings = new TreeSet<>();
+
+        if(meetings.isEmpty()){
+                this.meetings.forEach(this::removeMeeting);
+        }else{
+            //Fix later
+
+
+        }
         this.meetings = meetings;
     }
 
@@ -84,6 +94,13 @@ public class AppUser {
         if(meetings.remove(meeting)){
             meeting.getParticipants().remove(this);
         }
+    }
+
+    public void clearMeetings(){
+        for(Meeting meeting : this.getMeetings()){
+            meeting.getParticipants().remove(this);
+        }
+        this.meetings.clear();
     }
 
     @Override
